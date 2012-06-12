@@ -22,7 +22,7 @@ println password.encodeAsBcrypt()
 def x = bcryptService.hashPassword(password)
 
 // if true continue, else bye.
-assert service.checkPassword(t, x)
+assert service.checkPassword(password, *hashed_password*)
 
 ```
 
