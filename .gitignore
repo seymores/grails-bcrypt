@@ -1,7 +1,6 @@
-*.class
-
-# Package Files #
-*.war
-*.ear
-
-target
+/plugin.xml
+.settings
+/target/
+/web-app/
+*.log
+*.zip
