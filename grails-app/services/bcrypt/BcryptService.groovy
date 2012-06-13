@@ -2,20 +2,17 @@ package bcrypt
 
 import grails.plugin.bcrypt.BCrypt
 
-
 class BcryptService {
 
-    def bcrypt = new BCrypt()
-
-    def String hashPassword(String pass) {
-        return  bcrypt.hashpw(pass, BCrypt.gensalt())
-    }
-    
-    def String hashPassword(String pass, int genSaltRound) {
-        return  bcrypt.hashpw(pass, BCrypt.gensalt(genSaltRound))
+    String hashPassword(String pass) {
+        return BCrypt.hashpw(pass, BCrypt.gensalt())
     }
 
-    def boolean checkPassword(String pass, String hash) {
-        return bcrypt.checkpw(pass, hash)
+    String hashPassword(String pass, int genSaltRound) {
+        return BCrypt.hashpw(pass, BCrypt.gensalt(genSaltRound))
+    }
+
+    boolean checkPassword(String pass, String hash) {
+        return BCrypt.checkpw(pass, hash)
     }
 }
