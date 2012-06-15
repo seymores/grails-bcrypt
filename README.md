@@ -4,6 +4,8 @@ grails-bcrypt
 Grails Simple BCrypt Plugin.
 This plugin makes it easy for you to ise bcrypt to hash your password so you don't get pawned like linkedin, etc etc. :-D
 
+This plugin provides a service class to generate and compare bcrypt hashes, and also a codec to generate bcrypt hash from String.
+
 
 Quick Usage
 ============
