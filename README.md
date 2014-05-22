@@ -1,33 +1,28 @@
 grails-bcrypt
 =============
+This plugin provides a service class to generate and compare BCrypt hashes, and also a codec to generate a BCrypt hash from a String directly.
 
-Grails Simple BCrypt Plugin.
-This plugin makes it easy for you to ise bcrypt to hash your password so you don't get pawned like linkedin, etc etc. :-D
-
-This plugin provides a service class to generate and compare bcrypt hashes, and also a codec to generate bcrypt hash from String.
-
-
-Quick Usage
+ Usage Example
 ============
 
-``` java
-
-// inject bcryptService the usual way
+```groovy
+// dependency-inject the bcryptService
 def bcryptService
 
 String password = "my password"
 
-// should give you a nice bcrypt hash
+// hash the password using the codec
 println password.encodeAsBcrypt()
 
-// same thing but using the service class
-def x = bcryptService.hashPassword(password)
+// hash the password using the service
+def hashedPassword = bcryptService.hashPassword(password)
 
-// if true continue, else bye.
-assert service.checkPassword(password, *hashed_password*)
-
+// compare the password with the hash to determine if the two are equivalent
+// unlike most encryption algorithms, when using BCrypt you cannot determine this simply by comparing
+// hashedPassword == password.encodeAsBcrypt()
+// because the BCrypt hash of a given String is variable
+assert bcryptService.checkPassword(password, hashedPassword)
 ```
-
 
 ## License
 
